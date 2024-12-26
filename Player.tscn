@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b68t3dkw7e3j2"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_spext"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wywa8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rky3d"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0996, 0)
+script = ExtResource("1_spext")
+SENSIBILIDADE_MOUSE = 0.15
+CAMERA_CONTROLLER = NodePath("CameraController/Camera")
+
+[node name="malha" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_wywa8")
+
+[node name="colisor" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rky3d")
+
+[node name="CameraController" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, -1.78814e-07, 0, 1, 0, 1.78814e-07, 0, 1, 0, 0.5, 0)
